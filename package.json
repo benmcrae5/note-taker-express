@@ -1,0 +1,24 @@
+{
+  "name": "note-taker-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon Develop/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benmcrae5/note-taker-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benmcrae5/note-taker-express/issues"
+  },
+  "homepage": "https://github.com/benmcrae5/note-taker-express#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
