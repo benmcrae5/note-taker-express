@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const { v4: uuidv4} = require('uuid');
 const noteData = require("./db/db.json");
 
 const app = express();
@@ -22,8 +23,16 @@ app.get("/api/notes", (req, res) => {
 });
 
 app.post("/api/notes", (req, res) => {
-    console.log(req.body);
-    res.json(req.body);
+    req.body.ID = uuidv4();
+    let newNote = noteData;
+    newNote.push(req.body);
+
+    fs.writeFileSync(
+        path.join(__dirname + "/db/db.json"), 
+        JSON.stringify(newNote)
+    );
+    
+    res.json(newNote);
 });
 
 //default to main page GOES AT END OF APP CALLS
