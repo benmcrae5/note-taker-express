@@ -12,17 +12,17 @@ app.use(express.static('Develop/public'));
 
 const PORT = process.env.PORT || 3003;
 
-//good
+//opens the notes page
 app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/notes.html"));
 });
 
-//good
+//gets a list of all notes
 app.get("/api/notes", (req, res) => {
     res.json(noteData);
 });
 
-//good?
+//adds a new note to db.json
 app.post("/api/notes", (req, res) => {
     req.body.id = uuidv4();
     let newNote = noteData;
@@ -36,6 +36,7 @@ app.post("/api/notes", (req, res) => {
     res.json(newNote);
 });
 
+//deletes the note with the :identifier id element from db.json
 app.delete("/api/notes/:identifier", (req, res) => {
     let index = noteData.findIndex(el => el.id === req.params.identifier);
     console.log(index);
@@ -56,7 +57,7 @@ app.get("*", (req, res) => {
     
 });
 
-//good
+//starts listening
 app.listen(PORT, () => {
     console.log(`Listening on localhost:${PORT}`);
 });
